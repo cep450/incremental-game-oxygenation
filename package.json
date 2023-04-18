@@ -1,0 +1,19 @@
+{
+  "name": "incremental-game",
+  "version": "1.0.0",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.37.0",
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {},
+  "description": ""
+}

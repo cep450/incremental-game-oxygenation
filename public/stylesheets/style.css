@@ -1,0 +1,64 @@
+
+.content {
+    font-size:14px;
+    background-color:azure;
+}
+
+button {
+    font-size:15px;
+    margin:5px;
+    padding:5px;
+}
+
+.startbutton {
+    display:block;
+    margin:auto;
+}
+
+.buybutton {
+    display:block;
+    margin:auto;
+    visibility: hidden;
+}
+
+.num {
+    display:inline;
+}
+
+/* 
+    TODO: 
+    show the percentages of these things as visual fractions of the space in different colors 
+    evokes the atmosphere changing color or at least composition- look this up for accuracy 
+    evokes an alien world 
+
+    could also do something similar for population and for the ground for time passing-
+    like red bands for how geologists found the time for this stuff for when this happened 
+
+    and the population of bacteria, what color might have corresponded to photosynthesis 
+    or different types of stuff? 
+*/
+
+.atmosphere {
+    background-color:lightblue;
+    color:steelblue;
+    margin:10px;
+    padding:10px;
+    border-radius: 2px;
+}
+
+.population {
+    background-color:darkkhaki;
+    color:darkolivegreen;
+    margin:10px;
+    padding:10px;
+    border-radius:5px;
+}
+
+.time {
+    background-color:saddlebrown;
+    color:lightgoldenrodyellow;
+    margin:10px;
+    padding:10px;
+    border-radius: 1px;
+    height:300px;
+}
