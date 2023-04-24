@@ -40,10 +40,25 @@ button {
 
 .atmosphere {
     background-color:lightblue;
-    color:steelblue;
+    color:royalblue;
     margin:10px;
     padding:10px;
     border-radius: 2px;
+    height:200px;
+}
+.O2 {
+    background-color:lightblue;
+}
+.CO2 {
+    background-color:aliceblue;
+}
+.N2 {
+    background-color:lightskyblue;
+}
+.atmosphere-text {
+    color:royalblue;
+    float:left;
+    padding:0 10px 0 10px;
 }
 
 .population {
