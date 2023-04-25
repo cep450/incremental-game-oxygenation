@@ -16,9 +16,7 @@ button {
 }
 
 .buybutton {
-    display:block;
     margin:auto;
-    visibility: hidden;
 }
 
 .num {
@@ -41,8 +39,7 @@ button {
 .atmosphere {
     background-color:lightblue;
     color:royalblue;
-    margin:10px;
-    padding:10px;
+    padding:15px;
     border-radius: 2px;
     height:200px;
 }
@@ -64,16 +61,17 @@ button {
 .population {
     background-color:darkkhaki;
     color:darkolivegreen;
-    margin:10px;
-    padding:10px;
+    padding:15px;
     border-radius:5px;
+    display:inline-block;
+    margin: auto;
+    min-height: 125px;
 }
 
 .time {
     background-color:saddlebrown;
     color:lightgoldenrodyellow;
-    margin:10px;
-    padding:10px;
+    padding:15px;
     border-radius: 1px;
-    height:300px;
+    height:150px;
 }
