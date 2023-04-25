@@ -40,82 +40,120 @@ let elem_time;
 let elem_population, elem_genetic;
 let div_population;
 let elem_buyBtnParent;
-
 let div_container;
 
+
+let btnIdCounter = 0;
+//button representing and managing logic for an upgrade
 class BuyButton {
-    constructor(id, text, fn, parent) {
 
-        this.id = id;
-
-        //instantiate on DOM 
-        this.elem = document.createElement('button');
-        parent.appendChild(this.elem);
-        this.elem.textContent = text;
-        this.elem.classList.add('buybutton');
-        this.elem.id = id;
-        this.elem.addEventListener('click', function(evt) {
-            evt.preventDefault();
-            fn();
-        });
-        this.display(false);
-
-        //associated stat it can reveal when bought 
+    //id: element id
+    //text: title of button
+    //fn: function called when clicked 
+    constructor(text, f) {
+        this.id = 'buy_' + btnIdCounter++;
+        this.text = text;
+        this.clickFn = f;
+        this.elem = undefined;
+        this.count = 0; //number of upgrades purchased 
     }
 
-    display(bool) {
+    //instantiate on the dom, default to buy button parent 
+    addToPage(parent = elem_buyBtnParent) {
+        this.elem = document.createElement('button');
+        parent.appendChild(this.elem);
+        this.elem.textContent = this.text;
+        this.elem.classList.add('buybutton');
+        this.elem.id = this.id;
+        let ff = this.clickFn; //gross, but it gets it to work
+        this.elem.addEventListener('click', function(evt, f = ff) {
+            evt.preventDefault();
+            f();
+        });
+        this.display(false);
+    }
+
+    //display/undisplay on page
+    display(bool = true) {
         if(bool) {
             this.elem.style.display = 'block';
         } else {
             this.elem.style.display = 'none';
         }
     }
-
-    bought() {
-
-        //if it hasn't been bought yet, 
-        //reveal its associated stat 
-
-    }
 }
+
+/*
+    UPGRADES TODO 
+
+    - array of strings so different upgrade text?
+    - different string for description of what stat it will upgrade for each?
+
+*/
+
+//upgrade buttons 
+const btn_divide = new BuyButton(
+    'Divide.', 
+    () => {
+        console.log('divide');
+        reproduce(1);
+    }
+);
+const btn_photo = new BuyButton(
+    'Develop photosynthesis. (100 mut)', 
+    () => {
+        console.log('photo');
+    }
+);
+const btn_mut = new BuyButton( 
+    'Genetic recombination: increase mutation rate. (1000 mut)', 
+    () => {
+        console.log('mut');
+    }
+);
+const btn_repo = new BuyButton(
+    'Increase auto division rate. (100 mut)',
+    () => {
+        console.log('repo');
+    }
+);
+
+
 
 //don't load until page loaded 
 window.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed, loading");
 
     //save element references 
+    div_container = document.querySelector('.content');
     elem_o2 = document.getElementById('O2');
     elem_co2 = document.getElementById('CO2');
     elem_n2 = document.getElementById('N2');
     elem_time = document.getElementById('time');
     elem_population = document.getElementById('population');
     elem_genetic = document.getElementById('genetic');
-
     div_o2 = document.querySelector('.O2');
     div_co2 = document.querySelector('.CO2');
     div_n2 = document.querySelector('.N2');
     div_population = document.querySelector('.population');
-
     elem_buyBtnParent = document.querySelector('.mutations');
 
-    div_container = document.querySelector('.content');
-
-    //add events to buttons 
-    //const bbtn_divide = new BuyButton('buy_1', 'Divide.', buy1, document.querySelector('.population'));
-    //const bbtn_photo = new BuyButton('buy_2', 'Better photosynthesis.', buy_photo, elem_buyBtnParent);
-    //const bbtn_mut = new BuyButton('buy_3', 'Increase mutation rate.', buy_mut, elem_buyBtnParent);
+    //add buttons to page 
+    btn_divide.addToPage(document.querySelector('.population'));
+    btn_photo.addToPage(); btn_photo.display();
+    btn_repo.addToPage(); btn_repo.display();
+    btn_mut.addToPage(); btn_mut.display();
     
-    const bbtn_test = new BuyButton('buy_test', 'add 10000 pop for testing', () => { reproduce(10000) }, elem_buyBtnParent);
+    const bbtn_test = new BuyButton('add 1000 pop for testing', () => { reproduce(1000) });
+    bbtn_test.addToPage();
     bbtn_test.display(true);
-    const bbtn_test2 = new BuyButton('buy_test', 'add 1000 pop for testing', () => { reproduce(1000) }, elem_buyBtnParent);
-    bbtn_test2.display(true);
 
     //game start button 
     var btnStart = document.getElementById('btn-start');
     btnStart.addEventListener('click', function(evt) {
         evt.preventDefault();
         btnStart.remove();
-        bbtn_divide.display(true);
+        btn_divide.display(true);
         console.log('starting game!');
         setInterval(tick, 1000);
     });
@@ -123,11 +161,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     //a single tick to get starting values 
     tick();
 
-});
+    console.log('loaded');
 
-function registerButton(id, callback) {
-    document.getElement
-}
+});
 
 
 
@@ -177,13 +213,10 @@ function visUpdatePopulation() {
     let baseHeight = 125; //initial min-width of div
     
     if(population / baseHeight <= width) {
-        console.log(population, ' ', width);
         div_population.style.minWidth = Math.round(population / baseHeight) + 'px';
-        console.log(div_population.style.minWidth); 
     } else {
         div_population.style.minWidth = width;
         div_population.style.minHeight = Math.round(population / width) + 'px';
-        console.log(div_population.style.minHeight);
     }
 }
 

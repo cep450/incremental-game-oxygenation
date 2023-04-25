@@ -1,6 +1,6 @@
 
 .content {
-    font-size:14px;
+    font-size:18px;
     background-color:azure;
 }
 
@@ -37,7 +37,7 @@ button {
 */
 
 .atmosphere {
-    background-color:lightblue;
+    background-color:white;
     color:royalblue;
     padding:15px;
     border-radius: 2px;
@@ -62,10 +62,13 @@ button {
     background-color:darkkhaki;
     color:darkolivegreen;
     padding:15px;
-    border-radius:5px;
+    border-radius:15px;
     display:inline-block;
-    margin: auto;
-    min-height: 125px;
+    min-height: 200px;
+    width:200px;
+    margin: 5px auto;
+    display:block;
+    text-align:center;
 }
 
 .time {
@@ -74,4 +77,5 @@ button {
     padding:15px;
     border-radius: 1px;
     height:150px;
+    font-size:18px;
 }
