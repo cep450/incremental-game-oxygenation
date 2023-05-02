@@ -20,10 +20,10 @@ let mutations = 0; //definitely shown
 
 //upgradeable rates that change how numbers accumulate.
 //arrays represent upgrade and genetic change cost. 
-let reposPerMutation = 100;      // chance to mutate every time reproduce. 
+let reposPerMutation = 50;      // chance to mutate every time reproduce. 
                                     //TODO make this upgradeable 
                                     //TODO is this random or every x set interval 
-let repoRate = 0;          // % of population that splits every tick. 
+let repoRate = 1 / 100;          // % of population that splits every tick. 
 
 //6CO2+6H2O→C6H12O6+6O2
 //but was this different when photosynthesis was in development?
@@ -126,7 +126,7 @@ const btn_divide = new BuyButton(
 );
 const btn_photo = new BuyButton(
     'Develop photosynthesis. \n 6CO2 + 6H2O → C6H12O6 + 6O2', 
-    [50, 100, 500, 1000],
+    [50, 100, 500, 1000, 5000, 10000, 50000, 100000],
     () => {
         console.log('photo bought');
         o2ProduceRate = o2ProduceRate + (1 / 10000000000);
@@ -135,7 +135,7 @@ const btn_photo = new BuyButton(
 );
 const btn_mut = new BuyButton( 
     'Increase mutation rate. \n Genetic recombination', 
-    [1, 500, 1000, 5000, 10000],
+    [1, 50, 100, 500, 1000, 5000, 10000, 50000, 100000],
     () => {
         console.log('mut bought');
         reposPerMutation = reposPerMutation / 1.5;
@@ -143,10 +143,10 @@ const btn_mut = new BuyButton(
 );
 const btn_repo = new BuyButton(
     'Increase automatic division rate.', 
-    [5, 100, 500, 1000, 5000, 10000],
+    [5, 50, 100, 500, 1000, 5000, 10000, 50000, 100000],
     () => {
         console.log('repo bought');
-        repoRate = repoRate + (1 / 75);
+        repoRate = repoRate + (1 / 100);
     }
 );
 
